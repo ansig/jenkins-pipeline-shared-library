@@ -1,0 +1,24 @@
+group 'se.ansig.sample.jenkins.pipeline'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    maven { url 'http://repo.jenkins-ci.org/releases/' }
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDir 'vars'
+        }
+    }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'org.jenkins-ci.plugins:job-dsl-core:1.62'
+    testCompile "org.spockframework:spock-core:1.1-groovy-2.3"
+}
