@@ -35,8 +35,8 @@ gradlew.bat clean test
 See the [Jenkins Pipeline docs][1] for a more detailed description on the various ways to use shared libraries in Pipeline
 scripts.
 
-If the shared library is defined in the Jenkins global configuration, then the build steps can be imported
-with the @Library annotation:
+If the shared library is defined in the Jenkins global configuration, then the various methods can be imported
+with the @Library annotation. For example, to use the utility methods:
 
 ```groovy
 @Library('jenkins-pipeline-shared-library')
@@ -48,6 +48,22 @@ node('build') {
 ```
 
 The 'sayHello' step is one of the build steps defined in this project.
+
+There is also a sample of a custom step defined in a class in the `src`. This must be invoked like so:
+
+```groovy
+@Library('jenkins-pipeline-shared-library')
+import static se.ansig.sample.jenkins.pipeline.Steps.*
+
+node {
+    stage('Test') {
+        log.info 'Starting'
+        myCustomStep this, 'arg'
+    }
+}
+```
+
+Note that the current pipeline script must be passed into the function as the first argument. Also note that the utility methods become available to without having to specifically import them, as in the first case.
 
 # Documentation
 
