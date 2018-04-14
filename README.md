@@ -36,7 +36,7 @@ See the [Jenkins Pipeline docs][1] for a more detailed description on the variou
 scripts.
 
 If the shared library is defined in the Jenkins global configuration, then the various methods can be imported
-with the @Library annotation. For example, to use the utility methods:
+with the `@Library` annotation. For example, to use the utility methods:
 
 ```groovy
 @Library('jenkins-pipeline-shared-library')
@@ -47,7 +47,7 @@ node('build') {
 }
 ```
 
-The 'sayHello' step is one of the build steps defined in this project.
+The `sayHello` step is one of the build steps defined in this project.
 
 There is also a sample of a custom step defined in a class in the `src`. This must be invoked like so:
 
@@ -74,7 +74,7 @@ For more information on how to develop Jenkins Pipeline shared libraries, please
 ## Spock testing
 
 In this project, the [Spock testing framework][2] is used for unit testing each build step. For some
-tests we use the built-in support for mocks to stub out any interaction with JobDSL. See the docs on
+tests we use the built-in support for mocks to stub out any interaction with Jenkins Pipeline methods. See the docs on
 [interaction based testing][3] for more details on how mocks work in Spock.
 
 [1]: https://jenkins.io/doc/book/pipeline/shared-libraries/
