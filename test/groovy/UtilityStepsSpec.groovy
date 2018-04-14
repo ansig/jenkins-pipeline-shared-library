@@ -4,14 +4,14 @@ class UtilityStepsSpec extends Specification {
 
     def "sayHello says hello to given name"(){
         setup:
-        JobDSL jobDSL = Mock()
-        def stepInstance = getStubbedUtilityStep("sayHello", jobDSL)
+        Pipeline script = Mock()
+        def stepInstance = getStubbedUtilityStep("sayHello", script)
 
         when:
         stepInstance.call(name)
 
         then:
-        1 * jobDSL.echo("Hello ${name}!")
+        1 * script.echo("Hello ${name}!")
 
         where:
         name << ["Anders"]
@@ -27,11 +27,4 @@ class UtilityStepsSpec extends Specification {
         }
         return step
     }
-}
-
-/**
- * Interface that defines all expected calls to JobDSL steps.
- */
-interface JobDSL {
-    void echo(Object... args)
 }

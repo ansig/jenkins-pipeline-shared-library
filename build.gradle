@@ -12,7 +12,13 @@ repositories {
 sourceSets {
     main {
         groovy {
+            srcDir 'src'
             srcDir 'vars'
+        }
+    }
+    test {
+        groovy {
+            srcDir 'test'
         }
     }
 }
